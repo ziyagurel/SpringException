@@ -1,6 +1,7 @@
 package com.ziyagurel.user;
 
 import com.ziyagurel.error.ErrorPage;
+import com.ziyagurel.error.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +22,9 @@ public class UserController {
         return this.userService.getUserById(id);
     }
 
-    @ExceptionHandler(NoSuchElementException.class)
+    @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorPage handleNoSuchElementException(NoSuchElementException exception, HttpServletRequest request){
-        return new ErrorPage(404, "User Not Found", request.getServletPath());
+    public ErrorPage handleNoSuchElementException(NotFoundException exception, HttpServletRequest request){
+        return new ErrorPage(404, exception.getMessage(), request.getServletPath());
     }
 }
