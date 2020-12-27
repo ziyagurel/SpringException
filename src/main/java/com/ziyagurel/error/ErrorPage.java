@@ -1,12 +1,15 @@
 package com.ziyagurel.error;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ErrorPage {
     int status;
     String message;
     long timeStamp;
     String path;
+    Map<String,String> validationError = new HashMap<>();
 
     public ErrorPage(int status, String message, String path){
         super();
@@ -47,4 +50,13 @@ public class ErrorPage {
     public void setPath(String path) {
         this.path = path;
     }
+
+    public Map<String, String> getValidationError() {
+        return validationError;
+    }
+
+    public void setValidationError(Map<String, String> validationError) {
+        this.validationError = validationError;
+    }
+
 }

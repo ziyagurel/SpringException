@@ -13,4 +13,8 @@ public class UserService {
     public User getUserById(long id) {
         return this.userDatabase.findById(id).orElseThrow(() -> new NotFoundException("User does not exist"));
     }
+
+    public User save(User user) {
+        return this.userDatabase.save(user);    
+    }
 }
