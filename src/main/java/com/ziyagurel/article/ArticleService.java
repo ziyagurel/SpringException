@@ -13,4 +13,8 @@ public class ArticleService {
     public Article getUserById(Long id) {
         return articleDatabase.findById(id).orElseThrow(() -> new NotFoundException("Article does not found"));
     }
+
+    public Article save(Article article) {
+        return articleDatabase.save(article);
+    }
 }
